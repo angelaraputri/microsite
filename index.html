@@ -6,11 +6,13 @@
 <title>linktree</title>
 <style>
   :root {
-    --ink: #f4f1ff;
-    --muted: #bfb8d8;
-    --glass: rgba(255, 255, 255, 0.07);
-    --glass-border: rgba(255, 255, 255, 0.14);
-    --accent: #c9b6ff;
+    --ink: #f3ecdc;
+    --muted: #bdb3a0;
+    --glass: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.13);
+    --accent: #e0b6ae;
+    --rose: #a96f6f;
+    --gold: #c8a25a;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,7 +27,7 @@
     place-items: center;
     padding: 48px 20px;
     overflow-x: hidden;
-    background: #0b0914;
+    background: #100e0c;
   }
 
   /* --- animated aurora background --- */
@@ -48,20 +50,20 @@
 
   .blob.a {
     width: 480px; height: 480px;
-    background: #6d28d9;
+    background: #a96f6f;
     top: -120px; left: -120px;
   }
 
   .blob.b {
     width: 420px; height: 420px;
-    background: #db2777;
+    background: #b08c52;
     bottom: -140px; right: -100px;
     animation-delay: -6s;
   }
 
   .blob.c {
     width: 360px; height: 360px;
-    background: #0ea5e9;
+    background: #8b6f7a;
     top: 40%; left: 55%;
     animation-delay: -12s;
     opacity: 0.4;
@@ -82,6 +84,18 @@
     opacity: 0.5;
     background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
     background-size: 4px 4px;
+  }
+
+  /* blurred cover backdrop */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: url("nme_cover.jpg") center 25% / cover no-repeat;
+    filter: blur(30px) brightness(0.4) saturate(1.15);
+    opacity: 0.55;
   }
 
   /* --- card --- */
@@ -112,7 +126,7 @@
     margin: 0 auto 16px;
     border-radius: 50%;
     padding: 4px;
-    background: conic-gradient(from 0deg, #6d28d9, #db2777, #0ea5e9, #6d28d9);
+    background: conic-gradient(from 0deg, #a96f6f, #c8a25a, #8b6f7a, #a96f6f);
     animation: spin 8s linear infinite;
   }
 
@@ -130,9 +144,10 @@
   }
 
   h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
   }
 
   .username {
@@ -259,8 +274,8 @@
     border-radius: 50%;
     display: grid;
     place-items: center;
-    background: linear-gradient(135deg, #6d28d9, #db2777);
-    box-shadow: 0 0 30px rgba(109, 40, 217, 0.5);
+    background: linear-gradient(135deg, #a96f6f, #c8a25a);
+    box-shadow: 0 0 30px rgba(169, 111, 111, 0.45);
   }
 
   .login-card .lock svg { width: 26px; height: 26px; fill: #fff; }
@@ -310,7 +325,7 @@
     font-weight: 700;
     color: #fff;
     cursor: pointer;
-    background: linear-gradient(90deg, #6d28d9, #db2777);
+    background: linear-gradient(90deg, #a96f6f, #c8a25a);
     background-size: 200% 100%;
     background-position: 0% 0;
     transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
@@ -319,7 +334,7 @@
   .btn-login:hover {
     background-position: 100% 0;
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(109, 40, 217, 0.45);
+    box-shadow: 0 12px 30px rgba(169, 111, 111, 0.4);
   }
 
   .error {
@@ -391,8 +406,8 @@
     transition: background 0.2s ease, transform 0.2s ease;
   }
 
-  .link-actions button:hover { background: #6d28d9; transform: scale(1.1); }
-  .link-actions button.del:hover { background: #db2777; }
+  .link-actions button:hover { background: #a96f6f; transform: scale(1.1); }
+  .link-actions button.del:hover { background: #8a2f2f; }
   .link-actions svg { width: 14px; height: 14px; fill: currentColor; }
 
   .is-auth .link .arrow { display: none; }
@@ -524,12 +539,12 @@
   .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); }
 
   .btn-danger {
-    background: linear-gradient(90deg, #9f1239, #db2777);
+    background: linear-gradient(90deg, #8a2f2f, #b04a4a);
   }
 
   .btn-danger:hover {
     background-position: 100% 0;
-    box-shadow: 0 12px 30px rgba(219, 39, 119, 0.45);
+    box-shadow: 0 12px 30px rgba(176, 74, 74, 0.45);
   }
 </style>
 </head>
@@ -567,7 +582,7 @@
   </div>
 
   <main id="profile" hidden>
-    <div class="avatar"><img src="pibble_square.jpg" alt="profile picture" /></div>
+    <div class="avatar"><img src="no_avatar.jpg" alt="profile picture" /></div>
     <h1>Zaurus</h1>
     <p class="username">@NMEgeekfan</p>
     <p class="bio">A short line about who you are and what people can find here.</p>
@@ -580,7 +595,7 @@
       </button>
     </div>
 
-    <footer>designed with &#10024; by yourname</footer>
+    <footer>designed with &#9834; by zaurus</footer>
   </main>
 
   <div class="modal-backdrop" id="modalBackdrop">
